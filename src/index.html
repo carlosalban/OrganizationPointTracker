@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Points Hub<span style="font-size:12px"> BETA</span></h1>
+				<p class="lead">Administrative Access</p>
+			</div>
+
+			<!-- tab navigation here-->
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active" name="homeTab"><a href="javascript:;">Home</a></li>
+				<li name="pointsTab"><a href="javascript:;">Points</a></li>
+				<li name="studentsTab"><a href="javascript:;">Students</a></li>
+				<li name="eventsTab"><a href="javascript:;">Events</a></li>
+				<li name="labsTab"><a href="javascript:;">Labs</a></li>
+			</ul>
+			<!-- main body here-->
+			<!--<p class="lead" style="margin-top:25px; display: none;"  id="mainBody">What would you like to do?</p>-->
+			<!-- HOME body here-->
+			<div id="homeTab">
+				<div class="jumbotron" style="margin-top: 40px">
+			  		<h3>Welcome to Points Hub.</h3>
+			  		<p>You have administrative access. Please use the navigation above to perform actions.</p>
+				</div>
+			</div>
+<!-- POINTS body here-->
+			<div id="pointsTab" style="display: none;">
+
+				<div class="row" class="mainBody">
+					<!-- Left Column-->
+					<div class="col-md-3">
+						<div class="panel panel-default" style="margin-top:15px">
+  							<div class="panel-body">
+  								<p class="lead">Select Action:</p>
+									<button type="button" class="btn btn-info active btn-block btn-lg" name="Award Points" style="margin-bottom:10px">Award Points</button>
+									<button type="button" class="btn btn-default btn-block btn-lg" name="View Points" style="margin-bottom:10px">View Points</button>
+									<button type="button" class="btn btn-default btn-block btn-lg" name="Edit Points" style="margin-bottom:10px">Edit Points</button>
+							</div>
+						</div>
+
+						<div class="panel panel-default" style="margin-top:15px">
+  							<div class="panel-body">
+							<p class="lead">Enter Data:</p>
+			  					<form style="margin-bottom: 30px;" >
+									<div name="rNumberAwardDiv" class="form-group">
+										<label>R Number: </label><br>
+										<input type="number" pattern="\d*" name="rNumberAward">
+									</div>
+									<div name="pointsEventDiv" class="form-group">
+										<label>Event:</label><br>
+											<select class="form-control" id="pointsEvent">
+											</select>
+									</div>
+									<div name="pointsAwardedDiv" class="form-group">
+										<label>Points to Award: </label><br>
+										<input type="number" pattern="\d*" name="pointsAwarded">
+									</div>
+									<div name="awardedByRnumberDiv" class="form-group">
+										<label>Awarded by: </label><br>
+										<input type="text" name="awardedByRnumber">
+									</div>
+									<button type="button" id="pointsBtn" class="btn btn-success btn-block btn-lg">Award</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- Right Column-->
+					<div class="col-md-9">
+						<div class="panel panel-default" style="margin-top:15px">
+  							<div class="panel-body">
+								<p class="lead">Results:</p>
+								<div class="alert alert-success" role="alert" id="pointSuccess" style="display:none">
+									<strong>Message!</strong>
+								</div>
+								<div class="table-responsive">
+									<table class="table table-striped table-hover table-bordered">
+										<thead>
+											<tr>
+												<th>Event Name</th>
+												<th>Points Earned</th>
+											</tr>
+										</thead>
+										<tbody id="pointsResult">
+											<tr>
+												<!--results here -->
+											</tr>
+										</tbody>
+									</table>
+								</div>
+			  				</div>
+			  			</div>
+			  		</div>
+	  			</div>
+			</div>
+<!-- STUDENT body here-->
+			<div id="studentsTab" style="display: none;" >
+	
+				<div class="row" class="mainBody">
+					<!-- Left Column-->
+					<div class="col-md-3">
+						<!-- button choices-->
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+									<p class="lead">Select Action:</p>
+					  				
+					    				<button type="button" class="btn btn-info active btn-block btn-lg" style="margin-bottom:10px" name="View Student">View Student</button>
+					  				
+					  				
+					   				 	<button type="button" class="btn btn-default btn-block btn-lg" style="margin-bottom:10px" name="Create Student">Create Student</button>
+					  				
+					  				
+					    				<button type="button" class="btn btn-default btn-block btn-lg" style="margin-bottom:10px" name="Edit Student">Edit Student</button>
+					  				
+					    				<button type="button" class="btn btn-default btn-block btn-lg" style="margin-bottom:10px" name="Delete Student">Delete Student</button>
+					  				
+								
+							</div>
+						</div>
+
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Enter Data:</p>
+			  					<form style="margin-bottom: 30px;" >
+									<div name="rNumberDiv" class="form-group">
+										<label for="rNumber">R Number: </label>
+										<input type="number" pattern="\d*" name="rNumber">
+									</div>
+									<div name="firstNameDiv" class="form-group">
+										<label>First Name:</label>
+										<input type="text" name="firstName">
+									</div>
+									<div name="lastNameDiv" class="form-group">
+										<label>Last Name:</label>
+										<input type="text" name="lastName">
+									</div>
+									<!--<div name="emailDiv" class="form-group">
+										<label>Email:</label>
+										<input type="email" name="email">
+									</div>-->
+									<div name="currentLabDiv" class="form-group">
+										<label>Current Lab:</label>
+										<select class="form-control" type="text" name="currentLab">
+										</select>
+									</div>
+									<div name="searchstudentByDiv" class="form-group">
+										<label>Search By:</label>
+											<select class="form-control" id="viewStudents">
+												<option value="byRnumber">R Number</option>
+												<option value="byName">Name</option>
+												<option value="byLab">Lab</option>
+												<option value="byEmail" style="display:none;">Email</option>
+											</select>
+									</div>
+									<button type="button" id="studentBtn" class="btn btn-success btn-block btn-lg">Search</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- Right Column-->
+					<div class="col-md-9">
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Results:</p>
+								<div class="alert alert-success" role="alert" id="studentSuccess" style="display:none">
+									<strong>Message!</strong>
+								</div>
+								<div class="table-responsive">
+									<table class="table table-striped table-hover table-bordered">
+										<thead>
+											<tr>
+												<th>R Number</th>
+												<th>First Name</th>
+												<th>Last Name</th>
+												<th>Current Lab</th>
+												<!--<th>Email</th>-->
+											</tr>
+										</thead>
+										<tbody id="studentResult">
+											<tr>
+												<!--<td>R Number</td>
+												<td>First Name</td>
+												<td>Last Name</td>
+												<td>Current Lab</td>
+												<td>Email</td>-->
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+	  				</div>
+	  			</div>
+			</div>
+<!-- EVENTS body here-->
+			<div id="eventsTab" style="display:none">
+
+				<div class="row" class="mainBody">
+					<!-- Left Column-->
+					<div class="col-md-3">
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+									<p class="lead">Select Action:</p>
+									<button type="button" class="btn btn-info btn-block btn-lg active" name="View Events">View Events</button>
+				    				<button type="button" class="btn btn-default btn-block btn-lg" name="Create Event">Create Event</button>
+				   					<button type="button" class="btn btn-default btn-block btn-lg" name="Update Event">Update Event</button>
+							</div>
+						</div>
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Enter Data:</p>
+			  					<form style="margin-bottom: 30px;" >
+									<div name="eventNameDiv" class="form-group">
+										<label>Event Name: </label><br>
+										<input type="text" name="eventName">
+									</div>
+									<!--
+									<div name="eventDataDiv" class="form-group">
+										<label>Event Date: </label><br>
+										<input type="text" name="eventDate">
+									</div>-->
+									<div name="semestereventDiv" class="form-group">
+										<label>Semester:</label><br>
+											<select class="form-control" id="semesterEvent">
+												<option value="Fall">Fall</option>
+												<option value="Spring">Spring</option>
+												<option value="Summer">Summer</option>
+											</select>
+									</div>
+									<div name="yeareventDiv" class="form-group">
+										<label>Year: </label><br>
+										<input type="number" pattern="\d*" name="eventyear">
+									</div>
+									<div name="searcheventByDiv" class="form-group">
+										<label>Search By:</label>
+											<select class="form-control" id="viewEvents">
+												<option value="byName">Event Name</option>
+												<option value="bySemester">Semester</option>
+											</select>
+									</div>
+									<button type="button" id="eventBtn" class="btn btn-success btn-block btn-lg">View</button>
+								</form>
+							</div>
+						</div>			
+					</div>
+					<!-- Right Column-->
+					<div class="col-md-9">
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Results:</p>
+								<div class="alert alert-success" role="alert" id="eventSuccess" style="display:none">
+									<strong>Message!</strong>
+								</div>
+								<div class="table-responsive">
+								<table class="table table-striped table-hover table-bordered">
+									<thead>
+										<tr>
+											<th>Event Name</th>
+											<th>Semester</th>
+											<th>Year</th>
+											<th>Date</th>
+										</tr>
+									</thead>
+									<tbody id="eventResult">
+										<tr>
+											<!--results here -->
+										</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+	  				</div>
+	  			</div>
+			</div>
+<!-- LABS body here-->
+			<div id="labsTab" style="display:none">
+			<div class="row" class="mainBody">
+					<!-- Left Column-->
+					<div class="col-md-3">
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Select Action:</p>
+			    				<button type="button" class="btn btn-info btn-block btn-lg active" name="View Labs">View Labs</button>
+			   					<button type="button" class="btn btn-default btn-block btn-lg" name="Create Labs">Create Lab</button>
+			    				<button type="button" class="btn btn-default btn-block btn-lg" name="Delete Labs">Delete Lab</button>
+							</div>
+						</div>
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Enter Data:</p>
+			  					<form style="margin-bottom: 30px;" >
+									<div name="CRNDiv" class="form-group">
+										<label>CRN: </label><br>
+										<input type="number" pattern="\d*" name="CRN">
+									</div>
+									<div name="courseNumberDiv" class="form-group">
+										<label>Course Number: </label>
+										<input type="number" pattern="\d*" name="courseNumber">
+									</div>
+									<div name="sectionNumberDiv" class="form-group" style="display:none">
+										<label>Section Number: </label>
+										<input type="number" pattern="\d*" name="sectionNumber">
+									</div>
+									<div name="semesterDiv" class="form-group">
+										<label>Semester:</label><br>
+											<select class="form-control" id="semester">
+												<option value="Fall">Fall</option>
+												<option value="Spring">Spring</option>
+												<option value="Summer">Summer</option>
+											</select>
+									</div>
+									<div name="yearlabDiv" class="form-group">
+										<label>Year: </label><br>
+										<input type="number" pattern="\d*" name="labyear">
+									</div>
+									<div name="professorDiv" class="form-group" style="display:none">
+										<label>Professor:</label><br>
+										<input type="text" name="professor">
+									</div>
+									<div name="searchlabByDiv" class="form-group">
+										<label>Search By:</label>
+											<select class="form-control" id="viewLabs">
+												<option value="byCRN">CRN</option>
+												<option value="byNumber">Course Number</option>
+												<option value="bySemester">Semester</option>
+											</select>
+									</div>
+									<button type="button" id="labBtn" class="btn btn-success btn-block btn-lg">View</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- Right Column-->
+					<div class="col-md-9">
+						<div class="panel panel-default" style="margin-top:15px">
+							<div class="panel-body">
+								<p class="lead">Results:</p>
+								<div class="alert alert-success" role="alert" id="labSuccess" style="display:none">
+									<strong>Message!</strong>
+								</div>
+								<!--<div class="alert alert-danger" role="alert" id="labWarning" style="display:none"><strong>Warning!</strong></div>-->
+								<div class="table-responsive">
+								<table class="table table-striped table-hover table-bordered">
+									<thead>
+										<tr>
+											<th>CRN</th>
+											<th>Course Number</th>
+											<th>Section Number</th>
+											<th>Semester</th>
+											<th>Year</th>
+											<th>Professor</th>
+										</tr>
+									</thead>
+									<tbody id="labResult">
+										<tr>
+											<!--results here -->
+										</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+	  				</div>
+	  			</div>
+			</div>
+
+			<!-- FOOTER-->
+			<div>
+				<p class="text-center">Programmed by: <a href="mailto:carlos@omegatango.com">Carlos Gabriel Alban</a>.</p>
+			</div>
+
+		</div> <!-- close container-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="./js/magic.js"></script>
+	</body>
+</html>
