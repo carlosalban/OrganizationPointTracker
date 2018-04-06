@@ -5,6 +5,6 @@ Ajax, PHP and MySQL application used to track and award member's points. Bootstr
 
 Not all features implemented. In process of refactoring code (.js file got BIG!).
 
-Live Example: http://omegatango.com/ieee/
+Live Example: https://mobile.ttuieee.org/
 
 Programmed by Carlos Gabriel Alban.
